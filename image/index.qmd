@@ -1,0 +1,25 @@
+---
+title: "Todd Cao - Lecturer in Marketing and Management"
+image: "image/logo2.png"
+about:
+  template: jolla
+  image-shape: rectangle
+  image-width: 15em
+  links: 
+    - text: Email
+      icon: envelope
+      href: mailto:caonhattuan@gmail.com
+    - text: Resume
+      icon: file-text
+    - text: Phone
+      icon: phone
+      href: tel:+84778690087
+---
+
+I’m Todd Cao, a Vietnamese PhD Candidate in Management at the University of Southern Queensland, Australia and Open University Vietnam, preparing to complete my doctorate and begin the next chapter as a lecturer.
+
+I am curious about how consumption can make consumers happy; in other words, consumer well-being. I am now expanding into the study of Deepfake influencers, who I believe can also bring joy to people's lives. Alongside my research, I bring more than ten years of teaching experience across companies and universities, supported by a career that spans industries from education to the non-profit sectors.
+
+Outside academia, I am an amateur guitarist with a love for dogs. It is  my time to step up as a man again who provides for those I love, including my family and two homeless children, Atri and Axet.To make this website more personal, I’ve prepared a quick video introduction.
+
+{{< video https://www.youtube.com/watch?v=Q6xasSMhndo width=560 height=315 >}}

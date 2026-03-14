@@ -1,0 +1,18 @@
+---
+title: "Contact Me"
+---
+
+I welcome opportunities to connect with colleagues, recruiters, and students. Please feel free to reach out using the details below. Thank you for visiting my portfolio, and I look forward to connecting with you.
+
+::: {.columns}
+<div class="profile-card">
+  <img src="image/ava.jpg" alt="Todd Cao" class="avatar">
+  <h3>Todd Cao</h3>
+  <p style="text-align:center;">
+    📧 <a href="mailto:caonhattuan@gmail.com">caonhattuan@gmail.com</a><br>
+    📱 <a href="tel:+84963436932">+84 963 436 932</a><br>
+    💼 <a href="https://www.linkedin.com/in/toddcao811/" target="_blank">LinkedIn</a><br>
+    🔗 <a href="https://github.com/justtoddcao/justtoddcao.github.io">Github</a>
+  </p>
+</div>
+:::

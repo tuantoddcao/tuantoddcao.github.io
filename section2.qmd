@@ -1,0 +1,34 @@
+---
+title: "Work & Teaching Experience"
+---
+
+## Overview
+From 2011 to 2016, I dedicated my heart to my freelance projects in marketing and management. Since 2016, my career has evolved from marketing and brand management in an international school to lecturing at several companies and universities between 2020 and 2024, where I developed my passion for teaching and student engagement [(Table 1)](#tb1).
+
+:::{#tab-work}
+
+<a id="tb1"></a>*Table 1. Professional and Academic Experience*
+
+| Timeline     | Position                                                                 |
+|--------------|--------------------------------------------------------------------------|
+| 2011 – 2013  | <span class="hover-img">Founder of Yumetalk<span><img src="image/2011.jpg" alt="Yumetalk" /></span></span> |
+| 2012 – 2015  | <span class="hover-img">Marketing Executive at Lucuffee<span><img src="image/2012.jpg" alt="Lucuffee" /></span></span> |
+| 2014         | <span class="hover-img">Marketing Executive for beauty vlogger Goc Cua Ru<span><img src="image/ru.png" alt="ru" /></span></span> |
+| 2014 – 2016  | <span class="hover-img">Event Organizer<span><img src="image/2014.jpg" alt="leaf" /></span></span> |
+| 2017  | <span class="hover-img">Marketing Executive at Greenwich University<span><img src="image/2016.png" alt="NIS" /></span></span> |
+| 2017 – 2020  | <span class="hover-img">Brand Manager at NIS School<span><img src="image/2017.png" alt="BAM" /></span></span> |
+| 2020 – 2023  | <span class="hover-img">Lecturer at Nguyen Tat Thanh University, Vietnam<span><img src="image/2020.png" alt="NTT" /></span></span> |
+| 2021 – 2021  | <span class="hover-img">Lecturer at Rouen Business School (Vietnam campus), France<span><img src="image/2021.jpg" alt="Rouen" /></span></span> |
+| 2023 – 2024  | <span class="hover-img">Lecturer at Van Lang University<span><img src="image/2023.png" alt="VL" /></span></span> |
+| 2018 – 2024  | <span class="hover-img">Teacher and Trainer at IMAP Corporation<span><img src="image/2018.png" alt="Imap" /></span></span> |
+
+:::
+
+## Teaching demonstration
+
+Below is a short 8-minute teaching demo where I introduce key concepts from Principles of Marketing to illustrate my teaching style and approach to student engagement.
+
+{{< video https://www.youtube.com/watch?v=tKdVvw0X0Tg >}}
+
+
+

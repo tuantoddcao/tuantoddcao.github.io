@@ -1,0 +1,31 @@
+project:
+  type: website
+  output-dir: docs
+  resources:
+    - styles.css
+    - ToddCao_Resume.pdf
+
+website:
+  title: "<img src='image/logo1.png' style='height:40px;'>"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - section1.qmd
+      - section2.qmd
+      - section3.qmd
+      - section4.qmd
+      - section5.qmd
+      - section6.qmd
+      - section7.qmd
+
+format:
+  html:
+    theme: zephyr
+    mainfont: arial
+    fontsize: 1rem
+    linkcolor: "#C8102E"
+    css: styles.css
+    toc: true
+
+

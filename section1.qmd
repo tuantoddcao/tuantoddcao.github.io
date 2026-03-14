@@ -1,0 +1,165 @@
+---
+title: "Education"
+---
+
+My academic journey from 2011 to 2026 has taken me from a curious undergraduate in Vietnam to a PhD candidate in Australia. My academic path did not begin in marketing. I first spent four years earning a Bachelor’s degree in Accounting, which gave me discipline but left me searching for something more. It was during my Master’s that I discovered my true passion for Marketing and was guided toward an academic research career. Now, as an early-stage researcher, I aspire to follow in my supervisors’ footsteps and grow into a great independent researcher while building my own line of inquiry. Below is my study timeline, including key degrees and certifications I have achieved.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+
+library(timevis)
+# Data for your timeline
+timeline_data <- data.frame(
+  id       = 1:4,
+  content  = c(
+    "Bachelor’s (Accounting)<br>Hung Vuong University, Vietnam",
+    "Master’s (Management)<br>Open University, Vietnam",
+    "PhD Student (Management)<br>Victoria University of Wellington, New Zealand<br><i>Withdrawn due to Covid-19</i>",
+    "PhD Candidate (Management)<br>University of Southern Queensland, Australia <br>& Open University, Vietnam"
+  ),
+  start    = c("2011-09-01", "2017-10-01", "2019-01-01", "2024-07-01"),
+  end      = c("2015-10-26", "2018-11-19", "2019-12-31", "2026-07-01")
+)
+
+# Create interactive timeline
+tv <- timevis(
+  timeline_data,
+  showZoom = TRUE,
+  fit = TRUE,
+  height = "220px",
+  width = "100%"
+)
+# Set visible window
+setWindow(tv, start = "2010-01-01", end = "2030-12-31")
+```
+## Bachelor’s Degree
+
+I earned my Bachelor’s degree in Accounting from Hung Vuong University, Vietnam (2011–2015). Although my interests moved beyond accounting, this period became a powerful turning point. I took the initiative to lead freelance projects ([see Freelance Projects](section4.qmd#freelance)), where I discovered my passion for Marketing, management, and teamwork. These projects allowed me to apply theory in real contexts, sharpen problem-solving skills, and build the confidence that would guide my academic and teaching journey.
+
+## Master’s Degree
+
+After several years of running freelance projects, I realized that passion alone was not enough — I needed stronger foundations in Marketing and Management. In 2017, I worked as a marketer for the University of Greenwich, but after six months I struggled to deliver efficient results. This setback became a turning point: I enrolled in the Master’s program at Open University Vietnam (ranked in the 801+ band for Business programs) to sharpen my skills. It was here that I discovered my passion not only for marketing and management, but also for teaching and research, which continue to shape my career today.
+
+At Open University Vietnam, I was awarded a full scholarship after achieving the highest entrance examination score (18.88/20). I went on to earn the highest GPA in the program (8.44/10) and received the university’s top graduate award, often referred to as the valedictorian prize. In addition, I achieved the highest defense score (9.8/10), which was formally recognized with an award. Within the program, I consistently excelled in my core areas: my Marketing subjects all scored 9.25 or above, and my Management subjects were always higher than 9.0. Below is an interactive spider map showing my scores across the Master’s program:
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(plotly)
+
+scores <- data.frame(
+  Category = c("Entrance Exam Score", "GPA score", "Master Defense Score", "Marketing Subject Score", "Management Subject Score", "Publication Score"),
+  Value = c(9.44, 8.44, 9.8, 9.25, 9, 4)
+)
+
+plot_ly(
+  type = 'scatterpolar',
+  r = scores$Value,
+  theta = scores$Category,
+  fill = 'toself',
+  name = "Master's Achievements",
+  line = list(color = '#1f3a93'),
+  fillcolor = 'rgba(255,214,0,0.4)'
+) %>%
+  layout(
+    polar = list(
+      radialaxis = list(visible = TRUE, range = c(0,10))
+    ),
+    showlegend = FALSE
+  )
+```
+
+## PhD Candidate
+
+In 2024, I began a Cotutelle PhD program jointly offered by the University of Southern Queensland, Australia, and Open University Vietnam. I work under the guidance of leading scholars, Professor Catherine Prentice, Dr. Jenny Wang, and Dr. Nguyen Hoang Sinh, whose collaboration has helped me sharpen both my theoretical insight and technical expertise. Through this program, I have developed strong skills in experimental research design, systematic literature reviews, and advanced tools including RStudio, Quarto, LaTeX, and GitHub.
+
+My research centers on consumer well-being: how consumption can enhance happiness and quality of life. Recently, I have studied the role of Artificial Intelligence and deepfake influencers as emerging forces that reshape consumer experiences. Drawing on self-discrepancy theory and compensatory consumption, I explore how individuals respond when their identities feel threatened. Methodologically, I specialize in controlled experiments complemented by systematic literature reviews to ensure a strong theoretical foundation. Below is a network map visualizing my research interests:
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(visNetwork)
+library(scales)
+
+makeResearchNetwork <- function(topics,
+                                priority = NULL,      # higher = larger node
+                                edges = NULL,         # optional custom edge list: data.frame(from, to)
+                                width = "100%",
+                                height = "520px",
+                                physics = TRUE) {
+  
+  if (is.null(priority)) priority <- rev(seq_along(topics))
+  size <- scales::rescale(priority, to = c(20, 55))  # node size range
+  
+  # Auto group labels
+  group <- ifelse(grepl("study|studies|review|systematic", topics, ignore.case = TRUE), "Method",
+           ifelse(grepl("artificial|ai|deepfake", topics, ignore.case = TRUE), "AI Concept", "Consumer Concept"))
+  
+  nodes <- data.frame(
+    id    = seq_along(topics),
+    label = topics,
+    value = size,
+    group = group,
+    title = paste0("<b>", topics, "</b><br>Priority: ", priority),
+    stringsAsFactors = FALSE
+  )
+  
+  # Build edges logically if not supplied
+  if (is.null(edges)) {
+    idx <- function(name) which(tolower(topics) == tolower(name))
+    pairs <- list(
+      c("Artificial Intelligence","Deepfake"),
+      c("Artificial Intelligence","Consumer well-being"),
+      c("Deepfake","Consumer well-being"),
+      c("Self-discrepancy","Compensatory Consumption"),
+      c("Self-discrepancy","Consumer well-being"),
+      c("Compensatory Consumption","Consumer well-being"),
+      # Experimental studies connects to all substantive concepts
+      c("Experimental studies","Artificial Intelligence"),
+      c("Experimental studies","Deepfake"),
+      c("Experimental studies","Self-discrepancy"),
+      c("Experimental studies","Compensatory Consumption"),
+      c("Experimental studies","Consumer well-being"),
+      # Systematic literature review connects to all
+      c("Systematic literature review","Artificial Intelligence"),
+      c("Systematic literature review","Deepfake"),
+      c("Systematic literature review","Self-discrepancy"),
+      c("Systematic literature review","Compensatory Consumption"),
+      c("Systematic literature review","Consumer well-being"),
+      c("Systematic literature review","Experimental studies")
+    )
+    edges <- do.call(rbind, lapply(pairs, function(p) {
+      i <- idx(p[1]); j <- idx(p[2])
+      if (length(i) == 1 && length(j) == 1)
+        data.frame(from = i, to = j, width = 2)
+    }))
+  }
+  
+  visNetwork(nodes, edges, width = width, height = height) %>%
+    visNodes(shape = "dot", borderWidth = 1, font = list(size = 16)) %>%
+    visGroups(groupname = "Method",  color = list(background = "#e0f2fe", border = "#0284c7")) %>%
+    visGroups(groupname = "AI Concept",    color = list(background = "#fde4cf", border = "#f97316")) %>%
+    visGroups(groupname = "Consumer Concept", color = list(background = "#e9fce5", border = "#16a34a")) %>%
+    visEdges(smooth = TRUE, color = list(opacity = 0.6)) %>%
+    visLegend(position = "right", width = 0.2) %>%
+    visOptions(highlightNearest = TRUE, nodesIdSelection = TRUE) %>%
+    visPhysics(enabled = physics, solver = "forceAtlas2Based",
+               forceAtlas2Based = list(gravitationalConstant = -50))
+}
+
+topics <- c(
+  "Consumer well-being",
+  "Artificial Intelligence",
+  "Deepfake",
+  "Self-discrepancy",
+  "Compensatory Consumption",
+  "Experimental studies",
+  "Systematic literature review"
+)
+
+# Priority from top to bottom (higher = larger node)
+priority <- c(7, 6, 5, 4, 3, 2, 1)
+
+makeResearchNetwork(topics, priority, height = "520px")
+```
+
+As part of my PhD research, I create digital stimuli to test how consumers respond to emerging technologies in marketing. Below is a sample video I developed featuring a Deepfake influencer introducing a new product.
+
+<div style="text-align:center;">
+  {{< video https://www.youtube.com/embed/XyxoKNDKt3o width=560 height=315 >}}
+</div>
