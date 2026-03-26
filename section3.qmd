@@ -1,14 +1,24 @@
 ---
-title: "Publications"
+title: "Research records"
 ---
 
-As an early-stage researcher, I have begun building my publication record in Marketing and consumer behavior, with a focus on consumer well-being, self-discrepancy, and the role of user-generated content in shaping consumption. My list is shorter than that of more senior scholars, but it reflects a clear research direction and the foundation of a long-term academic career. I take pride in this beginning, and I am committed to expanding it as I pursue new projects and collaborations. Below is a list of my published and forthcoming work, along with articles currently under review.
+## Academic work
+
+:::{#tab-fund}
+
+<a id="tb1"></a>*Table 2. Scholarships and Research Funding*
+
+| Paper | Status | Journal ranking |
+|---------------|------|---------------|
+| **Cao, T. T.**, Prentice, C., Wang, Q., & Nguyen, H. S. (2025). Financial self-discrepancy, consumer well-being, and luxury preferences: The moderating effect of access-based luxury formats. *Psychology & Marketing*. [https://doi.org/10.1002/mar.70057](https://doi.org/10.1002/mar.70057) | Published | Q1 JCR, A-ranked ABDC |
+| **Cao, T. T.**, Prentice, C., Wang, Q., & Nguyen, H. S. (2026). Conflicted by faith, drawn to pleasure: How religious self-discrepancy shapes product choices. *International Journal of Consumer Studies* [https://doi.org/10.1111/ijcs.70202](https://doi.org/10.1111/ijcs.70202) |  Published | Q1 JCR, A-ranked ABDC |
+
+:::
 
 ## Published and In Press
 
-- Cao, T., Prentice, C., Wang, Q., & Nguyen, H. S. (2025). Compensatory consumption: A review and research agenda using the Theory‐Context‐Characteristics‐Methodology framework. *International Journal of Consumer Studies*, *49*(5), e70112.[https://doi.org/10.1111/ijcs.70112](https://doi.org/10.1111/ijcs.70112)
+- **Cao, T. T.**, Prentice, C., Wang, Q., & Nguyen, H. S. (2025). Compensatory consumption: A review and research agenda using the Theory‐Context‐Characteristics‐Methodology framework. *International Journal of Consumer Studies*, *49*(5), e70112.[https://doi.org/10.1111/ijcs.70112](https://doi.org/10.1111/ijcs.70112)
 
-- Cao, T., Prentice, C., Wang, Q., & Nguyen, H. S. (2025). Financial self-discrepancy, consumer well-being, and luxury preferences: The moderating effect of access-based luxury formats. *Psychology & Marketing*. [https://doi.org/10.1002/mar.70057](https://doi.org/10.1002/mar.70057)
 
 - Cao, T. T. (2025). Self-discrepancy and gambling retention: A conceptual model of motivational and moral pathways. *Strategic Business Research*, 100001.[https://doi.org/10.1016/j.sbr.2025.100001](https://doi.org/10.1016/j.sbr.2025.100001)
 
