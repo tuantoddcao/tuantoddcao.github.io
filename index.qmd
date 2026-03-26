@@ -11,7 +11,7 @@ about:
       href: mailto:caonhattuan@gmail.com
     - text: Resume
       icon: file-text
-      href: ToddCao_Resume.pdf
+      href: ToddCao_Resume_26.pdf
     - text: Phone
       icon: phone
       href: tel:+84963436932
@@ -21,7 +21,9 @@ Welcome to my little world, Professors.
 
 I am Tuan (Todd) Cao, a PhD in Management (Marketing) from the University of Southern Queensland, Australia, and a PhD in Business Administration from Open University, Vietnam.
 
-My main focus is at the intersection of Artificial Intelligence and psychographics across marketing and organizational behavior. With 10 years working in the education business and 5 years as a lecturer, I believe I have many stories to enrich our café chitchat, Professors.
+Over the past four years, I have taught Fundamentals of Business and Management, Introduction to Public Relations, Crisis Management, Integrated Marketing Communications, Principles of Marketing, and Media Audience Research in English.
+
+As an early-career research, My main focus is at the intersection of Artificial Intelligence and psychographics across marketing and organizational behavior. With 10 years working in the education business and 5 years as a lecturer, I believe I have many stories to enrich our café chitchat, Professors.
 
 Outside academia, I am a marketing executive for several freelance projects, a business manager for F&B stores, and a guitarist with a love for dogs.
 
