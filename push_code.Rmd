@@ -7,7 +7,7 @@ date: "2026-03-14"
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-#Code
+#Code first time
 ```{r cars}
 git remote add origin https://github.com/justtoddcao/tuantoddcao.github.io.git
 git branch -M main
@@ -19,12 +19,12 @@ git config --global user.name "Tuan Todd Cao"
 git config --global user.email "caonhattuan@gmail.com"
 ```
 
-## Including Plots
-
-You can also embed plots, for example:
+## Updating
 
 ```{r pressure, echo=FALSE}
-plot(pressure)
+git add .
+git commit -m "update"
+git push
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
