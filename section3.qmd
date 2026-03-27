@@ -4,6 +4,8 @@ title: "Research records"
 
 ## Academic work
 
+I position my research at the intersection of artificial intelligence and well-being, examining how AI reshapes consumer behavior, ethical perceptions, and sustainability across marketing, tourism, and management.
+
 :::{#tab-fund}
 
 | Paper | Status | Journal ranking |
