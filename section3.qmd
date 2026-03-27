@@ -16,11 +16,11 @@ title: "Research records"
 | Ha, N. M., & **Cao, T. T.** (2019). Constructing athlete identification and the effectiveness of athlete endorsement on customer’s purchase intention. *Journal of Distribution Science*, 17(8). [https://doi.org/10.15722/jds.17.8.201908.87](https://doi.org/10.15722/jds.17.8.201908.87) | Published | Peer-reviewed journal |
 | Mai, N., **Cao, T. T.**, & Yunen, Z. (2025). How hotels communicate sustainability goal revisions: The role of perceived green-rinsing, influencer type, and sustainability solutions. *Journal of Sustainable Research*. | First Revision | Q1 JCR, <br> A*-ranked ABDC |
 | **Cao, T. T.**, Tuan, N. P., & Yunen, Z. (2026). When Generative Artificial Intelligence becomes a counsellor: How employee evaluations shape engagement and organizational attractiveness. *Journal of Enterprise Information Management*. | First Revision | Q1 JCR, <br> A-ranked ABDC |
-| **Cao, T. T**, & Tuan, N. P. (2026). Understanding consumer purchase intention toward ZeroClick GenAI-generated recommendations: Evidence from structural equation modeling and machine learning. *Journal of Internet Commerce*. | First Revision | Q1 JCR, <br> A-ranked ABDC |
+| **Cao, T. T**, & Tuan, N. P. (2026). Understanding consumer purchase intention toward ZeroClick GenAI-generated recommendations: Evidence from structural equation modeling and machine learning. *Journal of Internet Commerce*. | First Revision | Q1 JCR, <br> B-ranked ABDC |
 | Mai, N., **Cao, T. T.**, Yunen, Z. & Tingwen X. (2025). Deepfake versus Virtual Influencers: How Influencer Diversity and Corporate Social Responsibility Shape Consumer Ethicality and Engagement. *Journal of Business Ethics*. | Under Review | Q1 JCR, <br> FT50 |
-| **Cao, T. T.**, Mai, N., & Yunen, Z. (2025). Deepfake versus human influencers in hospitality marketing: The roles of emotional exhaustion, autonomy, and identity similarity in shaping booking intention. *Journal of Travel Research*. | Under Review | Q1 JCR, <br> A*-ranked ABDC |
+| **Cao, T. T.**, Mai, N., & Yunen, Z. (2025). Deepfake versus human influencers in hospitality marketing: The roles of emotional exhaustion, autonomy, and identity similarity in shaping booking intention. *Annals of Tourism Research*. | Under Review | Q1 JCR, <br> A*-ranked ABDC |
 | Mai, N., **Cao, T. T.**, & Yunen, Z. (2025). The right endorser for the right stay: How human and AI endorsers differ across privacy levels and service modes in accommodation booking intention. *Journal of Travel Research*. | Under Review | Q1 JCR, <br> A*-ranked ABDC |
-| Huong, P. N. Q., *Cao, T. T.*, & Thinh, D. H. L. (2026). Revaluing waste: The roles of true- to-ideal authenticity, actual-ought discrepancy, and user-generated content in willing- ness to pay for upcycled food. *The Australian Journal of Agricultural and Resource Eco- nomics* | Under Review | Q1 JCR, <br> A-ranked ABDC |
+| Huong, P. N. Q., **Cao, T. T.**, & Thinh, D. H. L. (2026). Revaluing waste: The roles of true- to-ideal authenticity, actual-ought discrepancy, and user-generated content in willing- ness to pay for upcycled food. *The Australian Journal of Agricultural and Resource Economics* | Under Review | Q1 JCR, <br> A-ranked ABDC |
 
 :::
 
@@ -28,11 +28,13 @@ title: "Research records"
 
 :::{#tab-fund}
 
-| Name | Type | Venue | Status |
-|-----------------------|------|------|------------|
-| Intelligent Knowledge for Sustainable Organizations IFKAD 2026 | Conference | Hungary | Accepted Paper |
-| Integrate 2022 Conference | Webinar | West Virginia University | Attendee |
-| Living Planet Symposium 2022 | Webinar | European Space Agency | Attendee |
-| The Third International Conference on Business 2019 | Conference | University of Economics Ho Chi Minh City | Presenter |
+| Name | Year | Location | Status |
+|--------------------------------------------------------|---|------------------------------------|---------------|
+| Intelligent Knowledge for Sustainable Organizations (IFKAD) | 2026 | Hungary | Accepted Paper |
+| Queensland Marketing Research Group Conference | 2025 | Australia | Attendee |
+| Queensland Marketing Research Group Conference | 2024 | Australia | Attendee |
+| Integrate Conference | 2022 | West Virginia University | Attendee |
+| Living Planet Symposium  | 2022 | European Space Agency | Attendee |
+| Third International Conference on Business | 2019 | University of Economics | Presenter |
 
 :::
