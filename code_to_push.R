@@ -13,5 +13,5 @@ git config --global user.email "caonhattuan@gmail.com"
 
 quarto render
 git add --all
-git commit -m "update"
+git commit -m "2026"
 git push

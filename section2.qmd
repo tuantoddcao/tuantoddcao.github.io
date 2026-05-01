@@ -6,7 +6,7 @@ This section gives a quick look at how I work as a researcher, from building bet
 
 # Field stimuli
 
-Here is one example from a field experiment using a between-subjects design, where I tested how human presence versus human absence in short video stimuli shaped audience response.
+Here is one example from a field experiment using a between-subjects design, where I tested whether including human presence in short video stimuli increased consumers’ embodied mental simulation and, in turn, encouraged click-through behavior.
 
 :::: {.columns}
 
@@ -32,31 +32,18 @@ allowfullscreen>
 
 ::::
 
-I conduct all my studies in RStudio. Below are highlights of my methodological expertise, organized into three areas: experimental research, machine learning analyses, and systematic literature reviews.
-
 ## Experimental Research
 This section presents one experimental study in RStudio to show how I design experiments, run analyses, and interpret results through reproducible code.
 <style> pre code {font-size: 12px;}
 </style>
-```{r, eval=FALSE}
+```{r, echo=FALSE}
 # Packages
 options(scipen = 20)
-library(psych)
 library(rio)
+library(dplyr)
 library(ggplot2)
-library(moments)
-library(table1)
-library(flextable)
-library(officer)
-library(grid)
-library(gridExtra)
-library(car)
-library(ez)
-library(stats)
-library(lsr)
-library(effectsize)
-library(ARTool)
-# Set up
+library(plotly)
+
 cleanup <- theme(panel.grid.major = element_blank(),
                  panel.grid.minor = element_blank(),
                  panel.background = element_blank(),
@@ -65,212 +52,53 @@ cleanup <- theme(panel.grid.major = element_blank(),
                  legend.key = element_rect(fill ="white"),
                  text = element_text(family = "serif", size = 14),
                  plot.title = element_text(face = "bold", hjust = 0.5))
+
 # Import data
-data <- import(""D:/Website_tuantoddcao/tuantoddcao.github.io/Study_experiment.csv"")
-summary(data)
 
-# Variable validation
-data$Agegroup <- cut(data$Age,
-                       breaks = c(17, 27, 43, 59, Inf),
-                       labels = c("18 to 27","28 to 43", "44 to 59", "60 or over"))
-data$Gender <- factor(data$Gender,
-                        levels = c(0, 1, 4, 3),
-                        labels = c("Female", "Male", "Other identities", "Prefer not to say"))
-data$Edu <- factor(data$Edu,
+data_demo <- import("D:/Website_tuantoddcao/tuantoddcao.github.io/Study1B.xlsx")
+
+data_demo$edu <- factor(data_demo$edu,
                      levels = c(1:9),
-                     labels = c ("Less than primary", "Primary", "Some secondary",
-                                 "Secondary","Vocational or similar", "Some University but no degree", 
-                                 "University - Bachelors Degree", "Graduate or professional degree", 
-                                 "Prefer not to say"))
-data$Income <- factor(data$Income,
-                        levels = c(1:6),
-                        labels = c("Less than AUD 30,000", "AUD 30,000 - 49,999", "AUD 50,000 - 79,999",
-                                   "AUD 80,000 - 149,999", "AUD 150,000 - 199,999", "More than AUD 200,000"))
-data$Employment <-factor(data$Employment,
-                           levels = c(1:6),
-                           labels = c("Working full-time", "Working part-time", "Unemployed and looking for work",
-                                      "A homemaker or stay-at-home parent",
-                                      "Student", "Retired"))
-data$Group <- factor(data$Group,
-                       levels = c(1,2),
-                       labels = c("AI-absence", "AI-presence"))
-data$Setting <- factor(data$Setting,
-                       levels = c(1,2),
-                       labels = c("Public", "Private"))
+                     labels = c ("< Primary", "Primary", "Some secondary",
+                                 "Secondary","Vocational", "Some university", 
+                                 "Bachelor's", "Graduate/Professional", 
+                                 "Not disclosed"))
 
-# Demographic table
-data$Group <- factor(data$Group, levels = c("AI-presence", "AI-absence"))
-t1 <- table1(~ Gender + Agegroup + Edu + Employment + Income | Group, data = data)
-ft <- t1flex(t1)
-doc <- read_docx()
-doc <- body_add_flextable(doc, value = ft)
-print(doc, target = "Demographic_Table.docx")
+my_colors <- c("#0000ff", "#9d02d7", "#cd34b5", "#ea5f94", "#fa8775", "#ffb14e", "#ffd700")
 
-# Assumption checks
-
-model1 <- aov(Click_intent ~ Group * Setting, data = data)
-shapiro.test(residuals(model1))
-
-coeftest(model1, vcov = vcovHC(model1, type = "HC3"))
-
-## Homoscedasticity (equal variances)
-leveneTest(Click_intent ~ Group *Setting, data = data)
-oneway.test(Click_intent ~ Group, data = data, var.equal = FALSE)
-
-## Multicollinearity
-model_cov <- lm(Click_intent ~ Group + Group * Setting + Age + Gender + Income,
-                            data = data)
-vif(model_cov)
-
-model_full <- lm(Click_intent ~ Group * Setting, data = data)
-
-## Breusch–Pagan test
-bptest(model_full)
-
-## Durbin–Watson test
-dwtest(model_full)
-
-# Normality
-
-High_SD <- subset(data,Group == "AI-presence")
-Low_SD <- subset(data, Group == "AI-absence")
-
-#Normality of Consumer preference
-skewness(data$Click_intent)
-kurtosis(data$Click_intent) - 3
-shapiro.test(data$Click_intent)
-
-hg5 <- ggplot(data, aes(x = Click_intent)) +
-  geom_histogram(aes(y= after_stat(density)), fill = "#cccccc", binwidth = 1, color = "black") +
-  geom_density(color = "#D76C82", linewidth = 1) +
-  scale_x_continuous(breaks = 1:7) +
-  scale_y_continuous(labels = scales::percent) +
-  xlab("The preference scores") +
-  ylab("Frequency") +
-  ggtitle("The distribution of Click intention") +
-  theme(plot.title = element_text(hjust = 0.5)) +
-  cleanup
-
-# Reliability
-Ideal_cor_highSD <- cor(High_SD$Item_1, High_SD$Item_2, method = "pearson")
-Ideal_cor_highSD
-
-Ideal_cor_lowSD <- cor(Low_SD$Item_1, Low_SD$Item_2, method = "pearson")
-Ideal_cor_lowSD
-
-# Outliers
-High_SD$zscore <- scale(High_SD$Idealscore)
-High_SD_noout <- High_SD[abs(High_SD$zscore) <= 3, ]
-dim(High_SD_noout)
-dim(High_SD)
-
-Low_SD$zscore <- scale(Low_SD$Idealscore)
-Low_SD_noout <- Low_SD[abs(Low_SD$zscore) <= 3, ]
-dim(Low_SD_noout)
-dim(Low_SD)
-
-# ANOVA
-
-## Manipulation check
-
-manicheck <- aov(Idealscore ~ Group,
-                 data = data)
-summary(manicheck)
-eta_squared(manicheck)
-
-## Confidence interval
-ci <- ci.pvaf(F.value = 9.75, df.1 = 1, df.2 = 198, N = 200, conf.level = 0.95)
-ci
-
-MeanMani <- data %>%
-  group_by(Group) %>%
-  summarise(
-    Mean = mean(Idealscore, na.rm = TRUE),
-    SD = sd(Idealscore, na.rm = TRUE),
-    n = n()
-  )
-MeanMani
-
-# Moderation test
-model0 <- lm(Click_intent ~Group,
-             data = data)
-summary(model0)
-
-model1 <- lm(Click_intent ~Group*Setting,
-             data = data)
-summary(model1)
-anova(model1)
-
-effectsize::eta_squared(model1, partial = TRUE)
-
-ci_interaction <- ci.pvaf(F.value = 5.3300, df.1 = 1, df.2 = 196, N = 200, conf.level = 0.95)
-ci_interaction
-
-model_private <- lm(Click_intent ~ Group, data = subset(data, Setting == "Private"))
-summary(model_private)
-
-model_public <- lm(Click_intent ~ Group, data = subset(data, Setting=="Public"))
-summary(model_public)
-
-private_data <- subset(data, Setting == "Private")
-
-sd(private_data$Click_intent[private_data$Group == "AI-absence"])
-mean(private_data$Click_intent[private_data$Group == "AI-absence"])
-
-sd(private_data$Click_intent[private_data$Group == "AI-presence"])
-mean(private_data$Click_intent[private_data$Group == "AI-presence"])
-
-# Robustness checks
-
-## Nonparametric factorial test (keeps the 2×2 structure)
-art_model <- art(Click_intent ~ Group * Setting, data = data)
-anova(art_model)  # expect Group:Setting significant
-
-## Influential points sensitivity
-m <- lm(Click_intent ~ Group*Setting, data = data)
-idx <- order(cooks.distance(m), decreasing=TRUE)[1:2]
-anova(update(m, subset = -idx))
-
-## Simple-effects with multiplicity control
-m_private <- lm(Click_intent ~ Group, data=subset(data, Setting=="Private"))
-m_public  <- lm(Click_intent ~ Group, data=subset(data, Setting=="Public"))
-p.adjust(c(summary(m_private)$coeff[2,4], summary(m_public)$coeff[2,4]), method="holm")
-
-## Effect sizes with CIs
-effectsize::eta_squared(m, partial=TRUE, ci=0.95)
-effectsize::hedges_g(Click_intent ~ Group, data=subset(data, Setting=="Private"), ci=0.95)
-effectsize::hedges_g(Click_intent ~ Group, data=subset(data, Setting=="Public"), ci=0.95)
-
-# Covariates checks
-model_cov <- lm(Click_intent ~ Group * Setting + Age + Gender + Income,
-                            data = data)
-summary(model_cov)
-
-anova(model1, model_cov)
-
-#Graph
-## Summarize means and standard errors
-summary_data <- data %>%
-  group_by(Group, Setting) %>%
-  summarise(mean_prefer = mean(Click_intent, na.rm = TRUE),
-            se = sd(Click_intent, na.rm = TRUE)/sqrt(n()),
-            .groups = "drop")
-
-graph1 <- ggplot(summary_data, aes(x = Group, y = mean_prefer, color = Setting, group = Setting)) +
-  geom_line(linewidth = 1) +
-  geom_point(size = 3, shape = 21, fill = "white") +
-  geom_errorbar(aes(ymin = mean_prefer - se, ymax = mean_prefer + se), width = 0.15) +
-  scale_y_continuous(breaks = seq(1, 7, 1), limits = c(1, 7)) +
-  scale_color_manual(values = c("Private" = "#1a80bb", "Public" = "#a00000")) +
-  labs(
-    y = "Click intention",
-    x = "AI-interaction Group",
-    color = "Consumption Context",
+plot_demo <- function(data_use, varname, title_text) {
+  
+  tab <- data_use %>%
+    count(.data[[varname]]) %>%
+    rename(category = 1) %>%
+    arrange(desc(n)) %>%
+    mutate(rank = row_number())
+  
+  p <- ggplot(
+    tab,
+    aes(
+      x = n,
+      y = reorder(category, n),
+      fill = factor(rank),
+      text = paste0(category, "<br>Participants: ", n)
+    )
   ) +
-  theme(plot.title = element_text(hjust = 0.5, face = "bold")) +
-  cleanup
+    geom_col(width = 0.6, show.legend = FALSE) +
+    geom_text(aes(label = n), hjust = -0.1, size = 4) +
+    scale_fill_manual(values = rep(my_colors, length.out = nrow(tab))) +
+    labs(
+      title = title_text,
+      x = "The number of participants",
+      y = NULL
+    ) +
+    cleanup +
+    theme(axis.title.y = element_blank()) +
+    coord_cartesian(xlim = c(0, max(tab$n) * 1.15))
+  
+  ggplotly(p, tooltip = "text")
+}
 
-ggsave("Figure1.svg", plot = graph1, width = 6, height = 4, device = "svg")
+plot_demo(data_demo, "edu", "Education")
 
 ```
 ## Structural Equation Modeling and Machine-Learning Analyses

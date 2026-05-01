@@ -13,11 +13,9 @@ website:
         text: Home
       - section1.qmd
       - section2.qmd
-      - section3.qmd
       - section4.qmd
       - section5.qmd
       - section6.qmd
-      - section7.qmd
 
 format:
   html:
