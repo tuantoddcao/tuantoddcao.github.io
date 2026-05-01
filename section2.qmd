@@ -1,34 +1,758 @@
 ---
-title: "Work & Teaching Experience"
+title: "Research Capability"
 ---
 
-## Overview
-From 2011 to 2016, I dedicated my heart to my freelance projects in marketing and management. Since 2016, my career has evolved from marketing and brand management in an international school to lecturing at several companies and universities between 2020 and 2024, where I developed my passion for teaching and student engagement [(Table 1)](#tb1).
+This section gives a quick look at how I work as a researcher, from building between-subjects experiments and working in RStudio to turning ideas into clear research outputs. It shows how I design studies, work with data, and bring research into publishable form.
 
-:::{#tab-work}
+# Field stimuli
 
-<a id="tb1"></a>*Table 1. Professional and Academic Experience*
+Here is one example from a field experiment using a between-subjects design, where I tested how human presence versus human absence in short video stimuli shaped audience response.
 
-| Timeline     | Position                                                                 |
-|--------------|--------------------------------------------------------------------------|
-| 2011 – 2013  | <span class="hover-img">Founder of Yumetalk<span><img src="image/2011.jpg" alt="Yumetalk" /></span></span> |
-| 2012 – 2015  | <span class="hover-img">Marketing Executive at Lucuffee<span><img src="image/2012.jpg" alt="Lucuffee" /></span></span> |
-| 2014         | <span class="hover-img">Marketing Executive for beauty vlogger Goc Cua Ru<span><img src="image/ru.png" alt="ru" /></span></span> |
-| 2014 – 2016  | <span class="hover-img">Event Organizer<span><img src="image/2014.jpg" alt="leaf" /></span></span> |
-| 2017  | <span class="hover-img">Marketing Executive at Greenwich University<span><img src="image/2016.png" alt="NIS" /></span></span> |
-| 2017 – 2020  | <span class="hover-img">Brand Manager at NIS School<span><img src="image/2017.png" alt="BAM" /></span></span> |
-| 2020 – 2023  | <span class="hover-img">Lecturer at Nguyen Tat Thanh University, Vietnam<span><img src="image/2020.png" alt="NTT" /></span></span> |
-| 2021 – 2021  | <span class="hover-img">Lecturer at Rouen Business School (Vietnam campus), France<span><img src="image/2021.jpg" alt="Rouen" /></span></span> |
-| 2023 – 2024  | <span class="hover-img">Lecturer at Van Lang University<span><img src="image/2023.png" alt="VL" /></span></span> |
-| 2018 – 2024  | <span class="hover-img">Teacher and Trainer at IMAP Corporation<span><img src="image/2018.png" alt="Imap" /></span></span> |
+:::: {.columns}
 
+::: {.column width="50%"}
+### Human Presence
+<iframe width="100%" height="315"
+src="https://www.youtube.com/watch?v=YC0EvhrqDv4"
+title="Human Presence"
+frameborder="0"
+allowfullscreen>
+</iframe>
 :::
 
-## Teaching demonstration
+::: {.column width="50%"}
+### Human Absence
+<iframe width="100%" height="315"
+src="https://www.youtube.com/watch?v=1uKujcBwDbk"
+title="Human Absence"
+frameborder="0"
+allowfullscreen>
+</iframe>
+:::
 
-Below is a short 8-minute teaching demo where I introduce key concepts from Principles of Marketing to illustrate my teaching style and approach to student engagement.
+::::
 
-{{< video https://www.youtube.com/watch?v=tKdVvw0X0Tg >}}
+I conduct all my studies in RStudio. Below are highlights of my methodological expertise, organized into three areas: experimental research, machine learning analyses, and systematic literature reviews.
 
+## Experimental Research
+This section presents one experimental study in RStudio to show how I design experiments, run analyses, and interpret results through reproducible code.
+<style> pre code {font-size: 12px;}
+</style>
+```{r, eval=FALSE}
+# Packages
+options(scipen = 20)
+library(psych)
+library(rio)
+library(ggplot2)
+library(moments)
+library(table1)
+library(flextable)
+library(officer)
+library(grid)
+library(gridExtra)
+library(car)
+library(ez)
+library(stats)
+library(lsr)
+library(effectsize)
+library(ARTool)
+# Set up
+cleanup <- theme(panel.grid.major = element_blank(),
+                 panel.grid.minor = element_blank(),
+                 panel.background = element_blank(),
+                 axis.line.x = element_line(color = "black"),
+                 axis.line.y = element_line(color = "black"),
+                 legend.key = element_rect(fill ="white"),
+                 text = element_text(family = "serif", size = 14),
+                 plot.title = element_text(face = "bold", hjust = 0.5))
+# Import data
+data <- import(""D:/Website_tuantoddcao/tuantoddcao.github.io/Study_experiment.csv"")
+summary(data)
 
+# Variable validation
+data$Agegroup <- cut(data$Age,
+                       breaks = c(17, 27, 43, 59, Inf),
+                       labels = c("18 to 27","28 to 43", "44 to 59", "60 or over"))
+data$Gender <- factor(data$Gender,
+                        levels = c(0, 1, 4, 3),
+                        labels = c("Female", "Male", "Other identities", "Prefer not to say"))
+data$Edu <- factor(data$Edu,
+                     levels = c(1:9),
+                     labels = c ("Less than primary", "Primary", "Some secondary",
+                                 "Secondary","Vocational or similar", "Some University but no degree", 
+                                 "University - Bachelors Degree", "Graduate or professional degree", 
+                                 "Prefer not to say"))
+data$Income <- factor(data$Income,
+                        levels = c(1:6),
+                        labels = c("Less than AUD 30,000", "AUD 30,000 - 49,999", "AUD 50,000 - 79,999",
+                                   "AUD 80,000 - 149,999", "AUD 150,000 - 199,999", "More than AUD 200,000"))
+data$Employment <-factor(data$Employment,
+                           levels = c(1:6),
+                           labels = c("Working full-time", "Working part-time", "Unemployed and looking for work",
+                                      "A homemaker or stay-at-home parent",
+                                      "Student", "Retired"))
+data$Group <- factor(data$Group,
+                       levels = c(1,2),
+                       labels = c("AI-absence", "AI-presence"))
+data$Setting <- factor(data$Setting,
+                       levels = c(1,2),
+                       labels = c("Public", "Private"))
+
+# Demographic table
+data$Group <- factor(data$Group, levels = c("AI-presence", "AI-absence"))
+t1 <- table1(~ Gender + Agegroup + Edu + Employment + Income | Group, data = data)
+ft <- t1flex(t1)
+doc <- read_docx()
+doc <- body_add_flextable(doc, value = ft)
+print(doc, target = "Demographic_Table.docx")
+
+# Assumption checks
+
+model1 <- aov(Click_intent ~ Group * Setting, data = data)
+shapiro.test(residuals(model1))
+
+coeftest(model1, vcov = vcovHC(model1, type = "HC3"))
+
+## Homoscedasticity (equal variances)
+leveneTest(Click_intent ~ Group *Setting, data = data)
+oneway.test(Click_intent ~ Group, data = data, var.equal = FALSE)
+
+## Multicollinearity
+model_cov <- lm(Click_intent ~ Group + Group * Setting + Age + Gender + Income,
+                            data = data)
+vif(model_cov)
+
+model_full <- lm(Click_intent ~ Group * Setting, data = data)
+
+## Breusch–Pagan test
+bptest(model_full)
+
+## Durbin–Watson test
+dwtest(model_full)
+
+# Normality
+
+High_SD <- subset(data,Group == "AI-presence")
+Low_SD <- subset(data, Group == "AI-absence")
+
+#Normality of Consumer preference
+skewness(data$Click_intent)
+kurtosis(data$Click_intent) - 3
+shapiro.test(data$Click_intent)
+
+hg5 <- ggplot(data, aes(x = Click_intent)) +
+  geom_histogram(aes(y= after_stat(density)), fill = "#cccccc", binwidth = 1, color = "black") +
+  geom_density(color = "#D76C82", linewidth = 1) +
+  scale_x_continuous(breaks = 1:7) +
+  scale_y_continuous(labels = scales::percent) +
+  xlab("The preference scores") +
+  ylab("Frequency") +
+  ggtitle("The distribution of Click intention") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  cleanup
+
+# Reliability
+Ideal_cor_highSD <- cor(High_SD$Item_1, High_SD$Item_2, method = "pearson")
+Ideal_cor_highSD
+
+Ideal_cor_lowSD <- cor(Low_SD$Item_1, Low_SD$Item_2, method = "pearson")
+Ideal_cor_lowSD
+
+# Outliers
+High_SD$zscore <- scale(High_SD$Idealscore)
+High_SD_noout <- High_SD[abs(High_SD$zscore) <= 3, ]
+dim(High_SD_noout)
+dim(High_SD)
+
+Low_SD$zscore <- scale(Low_SD$Idealscore)
+Low_SD_noout <- Low_SD[abs(Low_SD$zscore) <= 3, ]
+dim(Low_SD_noout)
+dim(Low_SD)
+
+# ANOVA
+
+## Manipulation check
+
+manicheck <- aov(Idealscore ~ Group,
+                 data = data)
+summary(manicheck)
+eta_squared(manicheck)
+
+## Confidence interval
+ci <- ci.pvaf(F.value = 9.75, df.1 = 1, df.2 = 198, N = 200, conf.level = 0.95)
+ci
+
+MeanMani <- data %>%
+  group_by(Group) %>%
+  summarise(
+    Mean = mean(Idealscore, na.rm = TRUE),
+    SD = sd(Idealscore, na.rm = TRUE),
+    n = n()
+  )
+MeanMani
+
+# Moderation test
+model0 <- lm(Click_intent ~Group,
+             data = data)
+summary(model0)
+
+model1 <- lm(Click_intent ~Group*Setting,
+             data = data)
+summary(model1)
+anova(model1)
+
+effectsize::eta_squared(model1, partial = TRUE)
+
+ci_interaction <- ci.pvaf(F.value = 5.3300, df.1 = 1, df.2 = 196, N = 200, conf.level = 0.95)
+ci_interaction
+
+model_private <- lm(Click_intent ~ Group, data = subset(data, Setting == "Private"))
+summary(model_private)
+
+model_public <- lm(Click_intent ~ Group, data = subset(data, Setting=="Public"))
+summary(model_public)
+
+private_data <- subset(data, Setting == "Private")
+
+sd(private_data$Click_intent[private_data$Group == "AI-absence"])
+mean(private_data$Click_intent[private_data$Group == "AI-absence"])
+
+sd(private_data$Click_intent[private_data$Group == "AI-presence"])
+mean(private_data$Click_intent[private_data$Group == "AI-presence"])
+
+# Robustness checks
+
+## Nonparametric factorial test (keeps the 2×2 structure)
+art_model <- art(Click_intent ~ Group * Setting, data = data)
+anova(art_model)  # expect Group:Setting significant
+
+## Influential points sensitivity
+m <- lm(Click_intent ~ Group*Setting, data = data)
+idx <- order(cooks.distance(m), decreasing=TRUE)[1:2]
+anova(update(m, subset = -idx))
+
+## Simple-effects with multiplicity control
+m_private <- lm(Click_intent ~ Group, data=subset(data, Setting=="Private"))
+m_public  <- lm(Click_intent ~ Group, data=subset(data, Setting=="Public"))
+p.adjust(c(summary(m_private)$coeff[2,4], summary(m_public)$coeff[2,4]), method="holm")
+
+## Effect sizes with CIs
+effectsize::eta_squared(m, partial=TRUE, ci=0.95)
+effectsize::hedges_g(Click_intent ~ Group, data=subset(data, Setting=="Private"), ci=0.95)
+effectsize::hedges_g(Click_intent ~ Group, data=subset(data, Setting=="Public"), ci=0.95)
+
+# Covariates checks
+model_cov <- lm(Click_intent ~ Group * Setting + Age + Gender + Income,
+                            data = data)
+summary(model_cov)
+
+anova(model1, model_cov)
+
+#Graph
+## Summarize means and standard errors
+summary_data <- data %>%
+  group_by(Group, Setting) %>%
+  summarise(mean_prefer = mean(Click_intent, na.rm = TRUE),
+            se = sd(Click_intent, na.rm = TRUE)/sqrt(n()),
+            .groups = "drop")
+
+graph1 <- ggplot(summary_data, aes(x = Group, y = mean_prefer, color = Setting, group = Setting)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3, shape = 21, fill = "white") +
+  geom_errorbar(aes(ymin = mean_prefer - se, ymax = mean_prefer + se), width = 0.15) +
+  scale_y_continuous(breaks = seq(1, 7, 1), limits = c(1, 7)) +
+  scale_color_manual(values = c("Private" = "#1a80bb", "Public" = "#a00000")) +
+  labs(
+    y = "Click intention",
+    x = "AI-interaction Group",
+    color = "Consumption Context",
+  ) +
+  theme(plot.title = element_text(hjust = 0.5, face = "bold")) +
+  cleanup
+
+ggsave("Figure1.svg", plot = graph1, width = 6, height = 4, device = "svg")
+
+```
+## Structural Equation Modeling and Machine-Learning Analyses
+This section presents SEM and machine learning analyses in RStudio to show how I test models, assess predictive performance, and validate findings through code.
+
+### Structural Equation Modeling
+
+<style> pre code {font-size: 12px;}
+</style>
+```{r, eval=FALSE}
+# Preparation
+options(scipen = 20)
+library(psych)
+library(rio)
+library(ggplot2)
+library(moments)
+library(seminr)
+library(readr)
+library(dplyr)
+library(car)
+library(table1)
+library(flextable)
+library(officer)
+library(glmnet)
+library(patchwork)
+library(stringr)
+library(GGally)
+library(bnlearn)
+library(tidyr)
+library(glmnet)
+library(caret)
+library(randomForest)
+cleanup <- theme(panel.grid.major = element_blank(),
+                 panel.grid.minor = element_blank(),
+                 panel.background = element_blank(),
+                 axis.line.x = element_line(color = "black"),
+                 axis.line.y = element_line(color = "black"),
+                 legend.key = element_rect(fill ="white"),
+                 text = element_text(family = "serif", size = 14),
+                 plot.title = element_text(face = "bold", hjust = 0.5))
+
+freq_percent <- function(x) {
+  freq <- table(x)
+  percentage <- prop.table(freq)*100
+  percentage <- round(percentage, 2)
+  result <- data.frame(
+    value = names(freq),
+    Frequency = as.vector(freq),
+    Percentage = as.vector(percentage)
+  )
+  return(result)
+}
+
+# Data imported
+data <- import("D:/Website_tuantoddcao/tuantoddcao.github.io/Study1B.xlsx")
+summary(data)
+
+# Descriptive statistics
+
+data$agegroup <- cut(data$age,
+                       breaks = c(17, 27, 43, 59, Inf),
+                       labels = c("18 to 27","28 to 43", "44 to 59", "60 or over"))
+data$gender <- factor(data$gender,
+                        levels = c(1, 2, 3, 4),
+                        labels = c("Female", "Male", "Non binary / Third gender", "Prefer not to say"))
+data$edu <- factor(data$edu,
+                     levels = c(1:9),
+                     labels = c ("Less than primary", "Primary", "Some secondary",
+                                 "Secondary","Vocational or similar", "Some University but no degree", 
+                                 "University - Bachelors Degree", "Graduate or professional degree", 
+                                 "Prefer not to say"))
+data$income <- factor(data$income,
+                        levels = c(1:6),
+                        labels = c("Less than $30,000", "$30,000 - $49,999", "$50,000 - $79,999",
+                                   "$80,000 - $149,999", "$150,000 - $199,999", "More than $200,000"))
+data$employment <-factor(data$employment,
+                           levels = c(1:6),
+                           labels = c("Working full-time", "Working part-time", "Unemployed and looking for work",
+                                      "A homemaker or stay-at-home parent",
+                                      "Student", "Retired"))
+freq_percent(data$gender)
+describe(data$age)
+
+# Demographic graph
+
+my_colors <- c("#0000ff", "#9d02d7", "#cd34b5", "#ea5f94", "#fa8775", "#ffb14e", "#ffd700")
+
+plot_demo <- function(data_use, varname, title_text) {
+
+  tab <- data_use %>%
+    dplyr::count(.data[[varname]]) %>%
+    rename(category = 1) %>%
+    arrange(desc(n)) %>%
+    mutate(rank = row_number())
+  
+ ggplot(tab, aes(x = n, y = reorder(category, n), fill = factor(rank))) +
+    geom_col(width = 0.6, show.legend = FALSE) +
+    geom_text(aes(label = n), hjust = -0.1, size = 4) +
+   scale_fill_manual(
+  values = rep(my_colors, length.out = nrow(tab))
+) +
+    labs(
+      title = title_text,
+      x = "The number of participants",
+      y = NULL
+    ) +
+    cleanup +
+    theme(
+      plot.title = element_text(face = "bold", hjust = 0.5),
+      axis.title.y = element_blank()
+    ) +
+    coord_cartesian(xlim = c(0, max(tab$n) * 1.15))
+}
+
+p_age <- plot_demo(data, "agegroup", "Age group")
+p_gender <- plot_demo(data, "gender", "Gender")
+p_edu <- plot_demo(data, "edu", "Education")
+
+p_income <- plot_demo(data, "income", "Income")
+p_emp <- plot_demo(data, "employment", "Employment status")
+
+ggsave("gender.png", p_gender, width = 6, height = 4, dpi = 600)
+ggsave("age.png", p_age, width = 6, height = 4, dpi = 600)
+ggsave("education.png", p_edu, width = 6, height = 4, dpi = 600)
+ggsave("income.png", p_income, width = 6, height = 4, dpi = 600)
+ggsave("employment.png", p_emp, width = 6, height = 4, dpi = 600)
+
+# Scatter plot
+data_scatter <- data
+
+data_scatter <- data.frame(
+  E.use = rowMeans(data[, c("easyuse_1","easyuse_2","easyuse_3")], na.rm = TRUE),
+  Personalization = rowMeans(data[, c("personal_1","personal_2","personal_3","personal_4")], na.rm = TRUE),
+  R.advantage = rowMeans(data[, c("advantage_1","advantage_2","advantage_3")], na.rm = TRUE),
+  Observability = rowMeans(data[, c("visibility_1","visibility_2","visibility_3")], na.rm = TRUE),
+  Compatibility = rowMeans(data[, c("compatibility_1","compatibility_2","compatibility_3","compatibility_4")], na.rm = TRUE),
+  Reliance = rowMeans(data[, c("reliance_1","reliance_2","reliance_3")], na.rm = TRUE),
+  Purchase.intent = rowMeans(data[, c("purchase_1","purchase_2","purchase_3")], na.rm = TRUE),
+  Ad.skepticism = rowMeans(data[, c("skepticism_1","skepticism_2","skepticism_3","skepticism_4","skepticism_5")], na.rm = TRUE)
+)
+
+pair_df <- data_scatter[, c(
+  "E.use",
+  "Personalization",
+  "R.advantage",
+  "Observability",
+  "Compatibility",
+  "Reliance",
+  "Purchase.intent",
+  "Ad.skepticism"
+)]
+
+scatter_plot <- ggpairs(
+  pair_df,
+  columns = 1:8,
+  upper = list(continuous = wrap("density", alpha = 0.6, color = "#3B4CC0")),
+  lower = list(continuous = wrap("points", alpha = 0.4, size = 0.8, color = "#DC143C")),
+  diag  = list(continuous = wrap("densityDiag", color = "#008000"))
+) +
+
+# Correlation
+cor(pair_df, use = "pairwise.complete.obs")
+
+# Outliers
+## Mahalanobis
+data_construct <- data.frame(
+  E.use = rowMeans(data[, c("easyuse_1","easyuse_2","easyuse_3")], na.rm = TRUE),
+  Personalization = rowMeans(data[, c("personal_1","personal_2","personal_3","personal_4")], na.rm = TRUE),
+  R.advantage = rowMeans(data[, c("advantage_1","advantage_2","advantage_3")], na.rm = TRUE),
+  S.visibility = rowMeans(data[, c("visibility_1","visibility_2","visibility_3")], na.rm = TRUE),
+  P.compatibility = rowMeans(data[, c("compatibility_1","compatibility_2","compatibility_3","compatibility_4")], na.rm = TRUE),
+  P.reliance = rowMeans(data[, c("reliance_1","reliance_2","reliance_3")], na.rm = TRUE),
+  Purchase.intent = rowMeans(data[, c("purchase_1","purchase_2","purchase_3")], na.rm = TRUE),
+  Ad.skepticism = rowMeans(data[, c("skepticism_1","skepticism_2","skepticism_3","skepticism_4","skepticism_5")], na.rm = TRUE)
+)
+
+data_md <- na.omit(data_construct)
+
+mahal <- mahalanobis(
+  data_md,
+  colMeans(data_md),
+  cov(data_md)
+)
+
+cutmahal <- qchisq(1 - 0.001, df = ncol(data_md))
+cutmahal
+badmahal <- as.numeric(mahal > cutmahal)
+table(badmahal)
+
+## Leverage
+
+outlier_model <- lm(
+  rep(1, nrow(data_md)) ~ .,
+  data = data_md
+)
+
+k <- length(outlier_model$coefficients) - 1
+leverage <- hatvalues(outlier_model)
+cutleverage <- (2 * k + 2) / nrow(data_md)
+cutleverage
+badleverage <- as.numeric(leverage > cutleverage)
+table(badleverage)
+
+## Cooks distance
+cooks <- cooks.distance(outlier_model)
+cutcooks <- 4/(nrow(data_md) - k - 1)
+cutcooks
+badcooks <- as.numeric(cooks > cutcooks)
+table(badcooks)
+
+## Noout_data
+
+totalout <- badmahal + badcooks + badleverage
+data_noout <- subset(data, totalout <2)
+dim(data)
+dim(data_noout)
+
+# Table
+
+outlier_table <- data.frame(
+  No = data$ID,
+  Mahalanobis = badmahal,
+  Leverage    = badleverage,
+  CooksD      = badcooks
+)
+
+outlier_table$TotalFlags <- 
+  outlier_table$Mahalanobis +
+  outlier_table$Leverage +
+  outlier_table$CooksD
+
+outlier_table$Removed <- ifelse(outlier_table$TotalFlags >= 2, "Yes", "No")
+
+table_out <- subset(outlier_table, TotalFlags > 0)
+ft <- flextable(table_out)
+ft <- autofit(ft)
+doc <- read_docx()
+doc <- body_add_flextable(doc, value = ft)
+print(doc, target = "Outlier_JIC.docx")
+
+# Outer loadings
+Outer loading ≥ .70 → ideal, retain
+.40–.69 → retain only if CR and AVE are acceptable
+< .40 → drop
+
+mm <- constructs(
+  composite("easeuse",        multi_items("easyuse_", 1:3)),
+  composite("personalization",multi_items("personal_", 1:4)),
+  composite("reladv",         multi_items("advantage_", 1:3)),
+  composite("visibility",     multi_items("visibility_", 1:3)),
+  composite("compatibility",  multi_items("compatibility_", 1:4)),
+
+    composite("reliance",       multi_items("reliance_", 1:3)),
+  composite("purchase",       multi_items("purchase_", 1:3)),
+
+  composite("ad_skepticism", multi_items("skepticism_", c(1,2,4))),
+  interaction_term(iv = "reliance", moderator = "ad_skepticism", method = two_stage)
+)
+
+sm <- relationships(
+  paths(from = c("easeuse",
+                 "personalization",
+                 "reladv",
+                 "visibility",
+                 "compatibility"),
+        to = "reliance"),
+  paths(from = c("reliance", "ad_skepticism", "reliance*ad_skepticism"), to = "purchase")
+)
+
+pls_model <- estimate_pls(
+  data = data_noout,
+  measurement_model = mm,
+  structural_model  = sm
+)
+
+outer_loadings <- pls_model$outer_loadings
+outer_loadings
+
+ol_long <- as.data.frame(as.table(pls_model$outer_loadings))
+ol_long %>%
+  filter(Freq > 0) %>%     
+  group_by(Var2) %>%      
+  summarise(
+    min_loading = min(Freq),
+    max_loading = max(Freq)
+  )
+
+# Composite Reliability (rhoC), Cronbach’s alpha (α), rhoA, and AVE
+summary(pls_model)$reliability
+
+# Discriminant validity
+pls_model_full <- estimate_pls(
+  data = data_noout,
+  measurement_model = mm,
+  structural_model  = sm,
+  inner_weights = path_weighting
+)
+
+model_summary <- summary(pls_model_full)
+htmt_results <- model_summary$validity$htmt
+print(htmt_results)
+
+# VIF
+
+summary(pls_model_full)$vif
+
+# R² 
+pls_model_full$rSquared
+
+# Bootstrapping
+check_hypothesis <- bootstrap_model(
+  seminr_model = pls_model_full,
+  nboot = 5000,
+  cores = parallel::detectCores() - 1
+)
+
+summary(check_hypothesis)
+```
+### Mahine Learning analysis
+
+<style> pre code {font-size: 12px;}
+</style>
+```{r, eval=FALSE}
+make_ml_data <- function(data_noout) {
+  df <- data.frame(
+    E.use = rowMeans(data_noout[, c("easyuse_1","easyuse_2","easyuse_3")], na.rm = TRUE),
+    Personalization = rowMeans(data_noout[, c("personal_1","personal_2","personal_3","personal_4")], na.rm = TRUE),
+    R.advantage = rowMeans(data_noout[, c("advantage_1","advantage_2","advantage_3")], na.rm = TRUE),
+    S.visibility = rowMeans(data_noout[, c("visibility_1","visibility_2","visibility_3")], na.rm = TRUE),
+    P.compatibility = rowMeans(data_noout[, c("compatibility_1","compatibility_2","compatibility_3","compatibility_4")], na.rm = TRUE),
+    Reliance = rowMeans(data_noout[, c("reliance_1","reliance_2","reliance_3")], na.rm = TRUE),
+    Purchase.intent = rowMeans(data_noout[, c("purchase_1","purchase_2","purchase_3")], na.rm = TRUE),
+    Ad.skepticism = rowMeans(data_noout[, c("skepticism_1","skepticism_2","skepticism_3","skepticism_4","skepticism_5")], na.rm = TRUE)
+  )
+
+  df <- na.omit(df)
+
+  # mean-center for interaction (no scaling)
+  df[, c("Reliance","Ad.skepticism")] <- scale(df[, c("Reliance","Ad.skepticism")],
+                                              center = TRUE, scale = FALSE)
+  df$Reliance_x_Ad.skepticism <- df$Reliance * df$Ad.skepticism
+  df
+}
+
+data_ml <- make_ml_data(data_noout)
+
+X <- model.matrix(
+  Purchase.intent ~ E.use + Personalization + R.advantage + S.visibility + P.compatibility +
+    Reliance + Ad.skepticism + Reliance_x_Ad.skepticism,
+  data = data_ml
+)[, -1]
+
+y <- data_ml$Purchase.intent
+
+## 1) Elastic Net (10-fold CV) + final refit at lambda.1se
+
+fit_enet <- function(X, y, alpha = 0.5, nfolds = 10, seed = 123) {
+  set.seed(seed)
+
+  cv_fit <- cv.glmnet(
+    x = X, y = y,
+    alpha = alpha,
+    nfolds = nfolds,
+    standardize = TRUE,
+    keep = TRUE
+  )
+  idx <- which(cv_fit$lambda == cv_fit$lambda.1se)
+  pred_oof <- as.numeric(cv_fit$fit.preval[, idx])
+
+  rmse <- sqrt(mean((y - pred_oof)^2, na.rm = TRUE))
+  mae  <- mean(abs(y - pred_oof), na.rm = TRUE)
+  r2   <- cor(y, pred_oof, use = "complete.obs")^2
+
+  final_fit <- glmnet(
+    x = X, y = y,
+    alpha = alpha,
+    lambda = cv_fit$lambda.1se,
+    standardize = TRUE
+  )
+
+  list(
+    cv = cv_fit,
+    lambda_1se = cv_fit$lambda.1se,
+    oof = list(rmse = rmse, mae = mae, r2 = r2, pred = pred_oof),
+    final = final_fit,
+    coef = coef(final_fit)
+  )
+}
+
+enet_res <- fit_enet(X, y, alpha = 0.5, nfolds = 10, seed = 123)
+
+enet_res$lambda_1se
+enet_res$oof[c("rmse","mae","r2")]
+enet_res$coef
+
+## Random Forest (caret 10-fold CV) + variable importance
+
+fit_rf_cv <- function(X, y, k = 10, tuneLength = 5, ntree = 1000, seed = 123) {
+  set.seed(seed)
+
+  ctrl <- trainControl(method = "cv", number = k)
+
+  rf_cv <- train(
+    x = X, y = y,
+    method = "rf",
+    trControl = ctrl,
+    tuneLength = tuneLength,
+    ntree = ntree,
+    importance = TRUE
+  )
+
+  list(
+    cv = rf_cv,
+    results = rf_cv$results[, c("mtry","RMSE","Rsquared","MAE")],
+    best = rf_cv$bestTune,
+    final_model = rf_cv$finalModel,
+    varimp = varImp(rf_cv, scale = TRUE)
+  )
+}
+
+rf_res <- fit_rf_cv(X, y, k = 10, tuneLength = 5, ntree = 1000, seed = 123)
+
+rf_res$results
+rf_res$best
+rf_res$varimp
+
+## Robustness check: permutation importance (CV-consistent)
+rf_perm_importance_cv <- function(X, y, seed = 123, k = 10, ntree = 1000, tuneLength = 5) {
+  set.seed(seed)
+
+  folds <- createFolds(y, k = k, returnTrain = TRUE)
+  ctrl <- trainControl(method = "cv", number = k, index = folds)
+
+  # tune once to get best mtry under the same CV setup
+  rf_cv <- train(
+    x = X, y = y,
+    method = "rf",
+    trControl = ctrl,
+    tuneLength = tuneLength,
+    ntree = ntree,
+    importance = TRUE
+  )
+  best_mtry <- rf_cv$bestTune$mtry
+
+  inc_rmse <- sapply(colnames(X), function(v) {
+    fold_increases <- numeric(length(folds))
+
+    for (i in seq_along(folds)) {
+      tr_idx <- folds[[i]]
+      te_idx <- setdiff(seq_len(nrow(X)), tr_idx)
+
+      Xtr <- X[tr_idx, , drop = FALSE]
+      ytr <- y[tr_idx]
+      Xte <- X[te_idx, , drop = FALSE]
+      yte <- y[te_idx]
+
+      set.seed(seed + i)
+      rf_fit <- randomForest(x = Xtr, y = ytr, ntree = ntree, mtry = best_mtry)
+
+      pred_base <- predict(rf_fit, Xte)
+      rmse_base <- sqrt(mean((yte - pred_base)^2))
+
+      Xte_perm <- Xte
+      Xte_perm[, v] <- sample(Xte_perm[, v])
+      pred_perm <- predict(rf_fit, Xte_perm)
+      rmse_perm <- sqrt(mean((yte - pred_perm)^2))
+
+      fold_increases[i] <- rmse_perm - rmse_base
+    }
+
+    mean(fold_increases)
+  })
+
+  permu <- data.frame(Predictor = names(inc_rmse), IncRMSE = as.numeric(inc_rmse))
+  permu <- permu[order(-permu$IncRMSE), ]
+
+  list(best_mtry = best_mtry, permutation_importance = permu, rf_cv = rf_cv)
+}
+
+perm_res <- rf_perm_importance_cv(X, y, seed = 123, k = 10, ntree = 1000, tuneLength = 5)
+
+perm_res$best_mtry
+head(perm_res$permutation_importance, 20)
+```
 
