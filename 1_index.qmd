@@ -1,0 +1,88 @@
+---
+title: "Todd Cao - Lecturer in Marketing and Management"
+image: "image/logo2.png"
+about:
+  template: jolla
+  image-shape: rectangle
+  image-width: 15em
+  links: 
+    - text: Email
+      icon: envelope
+      href: mailto:caonhattuan@gmail.com
+    - text: Resume
+      icon: file-text
+      href: ToddCao_Resume.pdf
+    - text: Phone
+      icon: phone
+      href: tel:+84963436932
+---
+
+Welcome to my little corner of the world, Professors.
+
+My name is Todd Cao. I hold a PhD in Management from the University of Southern Queensland, Australia, and will soon hold a PhD in Business Administration from Open University, Vietnam.
+
+Over the past four years, I have taught courses in English, including Fundamentals of Business and Management, Introduction to Public Relations, Crisis Management, Integrated Marketing Communications, Principles of Marketing, and Media Audience Research. As an early-career researcher, my work focuses on the intersection of artificial intelligence, sustainability, and consumer well-being in marketing, tourism, and management.
+
+I know your time is valuable, but if anything in my résumé sparks your interest, I would be grateful if you could take a moment to watch it.
+
+Thank you very much, and I hope to connect with you soon.
+
+```{=html}
+<div class="city-wrapper">
+  <div class="city-layer">
+
+    <img src="image/city.svg" alt="City Map" class="city-background">
+
+    <a href="about.html" class="city-icon icon-home">
+      <img src="image/home.svg" alt="Home">
+      <span class="city-label">About Me</span>
+    </a>
+
+    <a href="about.html#contact" class="city-icon icon-contact">
+      <img src="image/contact.svg" alt="Contact">
+      <span class="city-label">Contact</span>
+    </a>
+
+    <a href="3_Research.html" class="city-icon icon-research">
+      <img src="image/research.svg" alt="Research">
+      <span class="city-label">Research</span>
+    </a>
+
+    <a href="4_Teaching.html" class="city-icon icon-talks-workshops">
+      <img src="image/talks-workshops.svg" alt="Teaching">
+      <span class="city-label">Teaching</span>
+    </a>
+
+    <a href="2_Publications.html" class="city-icon icon-bookshop">
+      <img src="image/bookshop.svg" alt="Publications">
+      <span class="city-label">Publications</span>
+    </a>
+
+    <a href="#" class="city-icon icon-open-science">
+      <img src="image/open-science.svg" alt="Open Science">
+      <span class="city-label">Open Science</span>
+    </a>
+
+    <a href="#" class="city-icon icon-illustration">
+      <img src="image/illustrations.svg" alt="Illustrations">
+      <span class="city-label">Illustrations</span>
+    </a>
+
+    <a href="#" class="city-icon icon-radio">
+      <img src="image/radio.svg" alt="Media">
+      <span class="city-label">Media & Interviews</span>
+    </a>
+
+    <a href="5_Achievements.html" class="city-icon icon-blog">
+      <img src="image/van.svg" alt="Achievements">
+      <span class="city-label">Achievements</span>
+    </a>
+
+    <a href="about.html" class="city-icon icon-coffee">
+      <img src="image/coffee-kiosk.svg" alt="Coffee Chat">
+      <span class="city-label">Coffee Chat</span>
+    </a>
+
+  </div>
+</div>
+```

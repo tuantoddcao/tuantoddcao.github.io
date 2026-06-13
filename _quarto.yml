@@ -9,12 +9,12 @@ website:
   title: "<img src='image/logo1.png' style='height:40px;'>"
   navbar:
     left:
-      - href: index.qmd
+      - href: 1_index.qmd
         text: Home
-      - section1.qmd
-      - section2.qmd
-      - section4.qmd
-      - section5.qmd
+      - 2_Publications.qmd
+      - 3_Research.qmd
+      - 4_Teaching.qmd
+      - 5_Achievements.qmd
       - section6.qmd
 
 format:

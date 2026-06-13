@@ -77,7 +77,6 @@ p { text-align: justify; }
   font-weight: bold;
 }
 
-```css
 .compact-widget {
   margin-bottom: 0.5rem;
 }
@@ -106,4 +105,105 @@ p { text-align: justify; }
   padding: 4px;
   border-radius: 6px;
   max-width: 200px;          /* keep images neat */
+}
+
+/* ===== Interactive City Map ===== */
+
+.city-wrapper {
+  width: 100%;
+  max-width: 1200px;   /* increase from 1200 */
+  margin: 0 auto;
+}
+
+.city-layer {
+  position: relative;
+}
+
+.city-background {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.city-icon {
+  position: absolute;
+  display: block;
+  transition: transform 0.25s ease;
+  z-index: 2;
+}
+
+.city-icon img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.city-icon:hover {
+  transform: translateY(-8px) scale(1.08);
+  z-index: 20;
+}
+
+/* Hover labels */
+
+.city-label {
+  position: absolute;
+  left: 50%;
+  bottom: 110%;
+  transform: translateX(-50%);
+  
+  background: #1f3a93;
+  color: #ffffff;
+
+  border: 2px solid #e8c97e;
+  border-radius: 6px;
+
+  padding: 6px 10px;
+  white-space: nowrap;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: all 0.2s ease;
+  pointer-events: none;
+}
+
+.city-icon:hover .city-label {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Positions */
+
+.icon-contact { top: 18.27%; left: 37.64%; width: 16.43%; }
+.icon-home { top: 0.11%; left: 44.98%; width: 21.10%; }
+.icon-talks-workshops { top: 6.41%; left: 62.85%; width: 15.72%; }
+.icon-research { top: 19.70%; left: 26.07%; width: 20.71%; }
+.icon-bookshop { top: 18.58%; left: 49.29%; width: 15.00%; }
+.icon-open-science { top: 40.45%; left: 21.86%; width: 7.67%; }
+.icon-illustration { top: 37.91%; left: 65.00%; width: 16.32%; }
+.icon-radio { top: 31.64%; left: 92.95%; width: 5.00%; }
+.icon-blog { top: 37.14%; left: 77.29%; width: 5.48%; }
+.icon-coffee { top: 57.27%; left: 51.79%; width: 7.14%; }
+
+.city-icon img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: filter 0.25s ease, transform 0.25s ease;
+}
+
+.city-icon:hover img {
+  filter: 
+    brightness(1.12)
+    drop-shadow(0 0 6px rgba(255, 255, 255, 0.95))
+    drop-shadow(0 0 14px rgba(255, 255, 255, 0.75))
+    drop-shadow(0 0 22px rgba(232, 201, 126, 0.75));
+}
+
+.city-icon:hover {
+  transform: translateY(-8px) scale(1.06);
+  z-index: 50;
 }
