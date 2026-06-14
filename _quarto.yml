@@ -15,7 +15,7 @@ website:
       - 3_Research.qmd
       - 4_Teaching.qmd
       - 5_Achievements.qmd
-      - section6.qmd
+      - 8_Contact.qmd
 
 format:
   html:

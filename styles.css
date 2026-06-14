@@ -152,9 +152,9 @@ p { text-align: justify; }
   transform: translateX(-50%);
   
   background: #1f3a93;
-  color: #ffffff;
+  color: #ffd600;
 
-  border: 2px solid #e8c97e;
+  border: 2px solid #ffd600;
   border-radius: 6px;
 
   padding: 6px 10px;
@@ -206,4 +206,23 @@ p { text-align: justify; }
 .city-icon:hover {
   transform: translateY(-8px) scale(1.06);
   z-index: 50;
+}
+
+.page-icon {
+  position: absolute;
+  top: 6rem;
+  left: 2rem;
+  width: 120px;
+  z-index: 100;
+}
+
+.page-icon img {
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 1300px) {
+  .page-icon {
+    display: none;
+  }
 }

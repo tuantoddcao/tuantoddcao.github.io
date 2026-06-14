@@ -1,0 +1,24 @@
+---
+title: "Contact"
+---
+
+::: {.page-icon}
+<img src="image/coffee-kiosk.svg" alt="" aria-hidden="true">
+:::
+
+# Knock on my door
+
+Thanks for visiting my corner of the world,
+
+If you would like to discuss research, teaching, collaboration opportunities, or simply exchange ideas, I would be delighted to hear from you. You can find me on:
+
+:::{}
+- [My Email](mailto:tuan.cao@griffith.edu.au)
+- [My Linkedin](https://www.linkedin.com/in/toddcao811/)
+- [My Facebook](https://www.facebook.com/kelvin.cao.9250)
+- [My WhatsApp](https://wa.me/61471029492)
+:::
+
+I hope to see you one day in person. And in case I don't see you, good afternoon, good evening, and good night!
+
+[Download My Resume](ToddCao_Resume.pdf){.btn .btn-danger target="_blank"}
