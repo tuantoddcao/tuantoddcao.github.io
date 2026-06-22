@@ -67,9 +67,9 @@ Feel free to wander around. You will find my research, teaching materials, proje
       <span class="city-label">Open Science</span>
     </a>
 
-    <a href="#" class="city-icon icon-illustration">
+    <a href="6_Freelance.html" class="city-icon icon-illustration">
       <img src="image/illustrations.svg" alt="Illustrations">
-      <span class="city-label">Illustrations</span>
+      <span class="city-label">My freelance projects</span>
     </a>
 
     <a href="#" class="city-icon icon-radio">

@@ -52,5 +52,29 @@ allowfullscreen>
 
 ## RStudio
 
-R is one of the most frequently used tools. I use it to analyse experimental data, estimate Bayesian networks, build predictive models, and apply techniques such as Elastic Net and Random Forest.
+R is one of the most frequently used tools. I use it to analyse experimental data, estimate Bayesian networks, build predictive models, and apply techniques such as Elastic Net and Random Forest. Below are the methods I am proficient in.
 
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(plotly)
+
+scores <- data.frame(
+  Category = c("Between-subjects experiments", "PLS-SEM", "Machine-learning", "In-depth interview", "Systematic literature review"),
+  Value = c(6, 4, 4, 2, 1)
+)
+
+plot_ly(
+  type = 'scatterpolar',
+  r = scores$Value,
+  theta = scores$Category,
+  fill = 'toself',
+  name = "Number of papers",
+  line = list(color = '#1f3a93'),
+  fillcolor = 'rgba(255,214,0,0.4)'
+) %>%
+  layout(
+    polar = list(
+      radialaxis = list(visible = TRUE, range = c(0,10))
+    ),
+    showlegend = TRUE
+  )
+```

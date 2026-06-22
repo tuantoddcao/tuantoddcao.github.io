@@ -15,6 +15,7 @@ website:
       - 3_Research.qmd
       - 4_Teaching.qmd
       - 5_Achievements.qmd
+      - 6_Freelance.qmd
       - 8_Contact.qmd
 
 format:
