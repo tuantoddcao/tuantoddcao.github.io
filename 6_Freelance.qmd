@@ -48,7 +48,7 @@ In 2015, I had the opportunity to lead the organization of the 5-year anniversar
 
 Beyond these six projects, I explored many other paths as well: teaching on television, helping a clinic attract investment, managing a fast-food store, and directing a stage play, among others. Each experience added a different chapter to my story. Some lasted only a few months, while others changed the direction of my journey entirely. Together, they form a collection of memories, lessons, and adventures that continue to shape the person I am today.
 
-![Figure 7. Other projects](image/others.png){#others width="60%" fig-align="center"}
+![](image/others.png){#others width="60%" fig-align="center"}
 
 One project that remains memorable was directing the stage play Wukong Re-Spring. We reimagined a familiar story, assembled a diverse creative team, and transformed a simple concept into a live performance.
 
