@@ -39,7 +39,7 @@ Feel free to wander around. You will find my research, teaching materials, proje
 
     <a href="about.html" class="city-icon icon-home">
       <img src="image/home.svg" alt="Home">
-      <span class="city-label">About Me</span>
+      <span class="city-label">About me</span>
     </a>
 
     <a href="about.html#contact" class="city-icon icon-contact">
@@ -69,7 +69,7 @@ Feel free to wander around. You will find my research, teaching materials, proje
 
     <a href="6_Freelance.html" class="city-icon icon-illustration">
       <img src="image/illustrations.svg" alt="Illustrations">
-      <span class="city-label">My freelance projects</span>
+      <span class="city-label">Freelance projects</span>
     </a>
 
     <a href="#" class="city-icon icon-radio">
@@ -84,7 +84,7 @@ Feel free to wander around. You will find my research, teaching materials, proje
 
     <a href="8_Contact.html" class="city-icon icon-coffee">
       <img src="image/coffee-kiosk.svg" alt="Coffee Chat">
-      <span class="city-label">Please contact me</span>
+      <span class="city-label">Contact me</span>
     </a>
 
   </div>

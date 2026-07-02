@@ -41,4 +41,5 @@ In 2026, I invited C-level executives, senior managers, and academics from the f
 # Teaching materials
 
 I believe slides should support learning, not replace it. Hence, I prefer a minimalist design that encourages discussion and critical thinking. Below is one sample.
+
 [Download my sample slide](Supply_chain_management.pdf){.btn .btn-yellow target="_blank"}
