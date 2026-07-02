@@ -18,7 +18,7 @@ One project involved a field experiment testing whether adding human presence to
 :::: {.columns}
 
 ::: {.column width="50%"}
-**Human presence**
+**Human-presence**
 <iframe width="100%" height="315"
 src="https://www.youtube.com/embed/YC0EvhrqDv4"
 title="Human Presence"
@@ -28,7 +28,7 @@ allowfullscreen>
 :::
 
 ::: {.column width="50%"}
-**Human absence**
+**Human-absence**
 <iframe width="100%" height="315"
 src="https://www.youtube.com/embed/1uKujcBwDbk"
 title="Human Absence"

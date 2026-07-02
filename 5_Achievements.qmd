@@ -4,7 +4,7 @@ title: "Achievements"
 
 
 ## Scholarships
-I have been fortunate to receive multiple scholarships and research grants that recognize both my academic excellence and research potential. These include full scholarships at the Master’s and PhD levels as well as competitive national and international research funding [(Table 2)](#fund).
+I have been fortunate to receive scholarships and research grants that recognize both my academic excellence and research potential.
 
 :::{#tab-fund}
 
@@ -21,18 +21,18 @@ I have been fortunate to receive multiple scholarships and research grants that 
 
 ## Awards
 
-Below are some of my academic awards, beginning with the recognition I received in 2017 for achieving the highest entrance examination score [(Figure 8)](#aw1). 
+Below are some of my academic awards, beginning with the recognition I received in 2017 for achieving the highest entrance examination score.
 
-![Figure 8. Award for Highest Entrance Examination Score](image/award1.png){#aw1 width="60%" fig-align="center"}
+![](image/award1.png){#aw1 width="60%" fig-align="center"}
 
-I went on to achieve the highest GPA in the program, a reflection of consistent performance across all subjects [(Figure 9)](#aw2).
+I went on to achieve the highest GPA in the program, a reflection of consistent performance across all subjects.
 
-![Figure 9. Highest GPA in Master's Program](image/award2.png){#aw2 width="60%" fig-align="center"}
+![](image/award2.png){#aw2 width="60%" fig-align="center"}
 
-This excellence was honored with the university’s Top Graduate Award, often referred to as the Valedictorian prize [(Figure 10)](#aw2).
+This excellence was honored with the university’s Top Graduate Award, often referred to as the Valedictorian prize.
 
-![Figure 10. Valedictorian – Top Graduate Award](image/award3.png){#aw3 width="60%" fig-align="center"}
+![](image/award3.png){#aw3 width="60%" fig-align="center"}
 
-Finally, I also received several other recognitions for my academic contributions and professional work, which further shaped my growth as both a researcher and an educator [(Figure 11)](#aw4).
+Finally, I also received several other recognitions for my academic contributions and professional work, which further shaped my growth as both a researcher and an educator.
 
-![Figure 11. Other Academic and Professional Awards](image/award4.png){#aw4 width="60%" fig-align="center"}
+![](image/award4.png){#aw4 width="60%" fig-align="center"}

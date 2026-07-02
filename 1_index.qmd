@@ -74,7 +74,7 @@ Feel free to wander around. You will find my research, teaching materials, proje
 
     <a href="#" class="city-icon icon-radio">
       <img src="image/radio.svg" alt="Media">
-      <span class="city-label">Media & Interviews</span>
+      <span class="city-label">Misc.</span>
     </a>
 
     <a href="5_Achievements.html" class="city-icon icon-blog">
