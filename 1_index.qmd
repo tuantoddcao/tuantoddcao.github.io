@@ -42,7 +42,7 @@ Feel free to wander around. You will find my research, teaching materials, proje
       <span class="city-label">About me</span>
     </a>
 
-    <a href="about.html#contact" class="city-icon icon-contact">
+    <a href="about.html" class="city-icon icon-contact">
       <img src="image/contact.svg" alt="Contact">
       <span class="city-label">Contact</span>
     </a>
@@ -62,7 +62,7 @@ Feel free to wander around. You will find my research, teaching materials, proje
       <span class="city-label">Here are my publications</span>
     </a>
 
-    <a href="#" class="city-icon icon-open-science">
+    <a href="about.html" class="city-icon icon-open-science">
       <img src="image/open-science.svg" alt="Open Science">
       <span class="city-label">Open Science</span>
     </a>
@@ -72,7 +72,7 @@ Feel free to wander around. You will find my research, teaching materials, proje
       <span class="city-label">Freelance projects</span>
     </a>
 
-    <a href="#" class="city-icon icon-radio">
+    <a href="about.html" class="city-icon icon-radio">
       <img src="image/radio.svg" alt="Media">
       <span class="city-label">Misc.</span>
     </a>

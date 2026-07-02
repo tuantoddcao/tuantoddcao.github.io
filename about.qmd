@@ -1,0 +1,10 @@
+---
+title: "Work in progress"
+image: "image/pending.png"
+about:
+  template: jolla
+  image-shape: rectangle
+  image-width: 15em
+---
+
+Oops... you've found a room that's still being furnished. I'm working on it—please come back later!
