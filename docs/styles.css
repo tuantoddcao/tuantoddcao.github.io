@@ -226,3 +226,9 @@ p { text-align: justify; }
     display: none;
   }
 }
+
+.btn-yellow {
+  background-color: #1f3a93;
+  border-color: #ffd600;
+  color: #000;
+}

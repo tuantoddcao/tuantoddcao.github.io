@@ -2,3 +2,43 @@
 title: "My teaching"
 ---
 
+::: {.page-icon}
+<img src="image/talks-workshops.svg" alt="" aria-hidden="true">
+:::
+
+# Teaching philosophy
+
+The classroom is where I meet people. I feel fortunate to have met talented and passionate students who have taught me as much as I have taught them. I aim to create a student-centered and industry-connected learning environment where students actively construct knowledge through discussion, collaboration, and reflection. My teaching follows an interactive learning approach using three classroom formats: L–C (Lecturer–Class Reflection), L–I–I–C (Lecturer–Individual–Individual–Class Reflection), and L–G–G–C (Lecturer–Group–Group–Class Reflection). Rather than relying on conventional group presentations, students engage in simulations of real business activities to apply concepts in authentic contexts. I also integrate industry perspectives by inviting experts to share their experiences and discuss current business challenges with students.
+
+# Courses taught
+
+- Introduction to Public Relations - PR202DE01
+- Crisis Management - PR402DE01
+- Fundamentals of Business and Management - PR201DE02
+- Media Audience Research - TT301DE02
+- Principles of Marketing - 71MRKT30013
+- Consumer Behavior - 71MRKT40073
+- Business Analytics - 71BUSI30053
+- Introduction to Marketing
+- E-Commerce
+- Strategic Marketing
+- Introduction to International Business
+
+# Industry engagement
+
+In 2026, I invited C-level executives, senior managers, and academics from the following organizations to share their real-world experiences with my students.
+
+- Milwaukee Tool Vietnam — Ms. Huong Phan, Marketing Manager
+- Saigon Telecommunications Corporation — Ms. Ngoc Dung, Chief Accountant
+- Teknologi MARA University (Shah Alam) — Mr. Najmi, Senior Lecturer
+- Vinasun Taxi Corporation — Mr. Du Tran, Regional Manager
+
+# Student Supervision
+
+- In 2026, I am supervising 11 undergraduate students for their bachelor's theses.
+- To date, I have supervised more than 30 undergraduate students on their bachelor's theses and 11 students during their internships.
+
+# Teaching materials
+
+I believe slides should support learning, not replace it. Hence, I prefer a minimalist design that encourages discussion and critical thinking. Below is one sample.
+[Download my sample slide](Supply_chain_management.pdf){.btn .btn-yellow target="_blank"}
